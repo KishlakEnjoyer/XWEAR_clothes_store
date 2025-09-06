@@ -1,0 +1,13 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+@font-face {
+  font-family: 'RF_Dewi';
+  src: url('../resources/fonts/RFDewiExpanded-Black.ttf');
+}
+
+body {
+  font-family: RF_Dewi;
+}
