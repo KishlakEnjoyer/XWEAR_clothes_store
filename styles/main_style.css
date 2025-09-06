@@ -101,6 +101,10 @@ a {
     justify-content: space-between;
 }
 
+.title-shoes h2 {
+    color: white;
+}
+
 .title-shoes a {
     text-decoration: underline;
     transition: all 0.6s ease;
