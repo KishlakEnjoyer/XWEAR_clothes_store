@@ -51,7 +51,7 @@ DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `user_email` varchar(120) NOT NULL,
   `good_article` varchar(8) NOT NULL,
-  `good_count` varchar(45) DEFAULT NULL,
+  `good_count` int DEFAULT NULL,
   PRIMARY KEY (`user_email`,`good_article`),
   KEY `fk_cart_good_idx` (`good_article`),
   CONSTRAINT `fk_cart_good` FOREIGN KEY (`good_article`) REFERENCES `goods` (`good_article`),
@@ -328,4 +328,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-08 14:46:28
+-- Dump completed on 2025-09-08 15:04:42
