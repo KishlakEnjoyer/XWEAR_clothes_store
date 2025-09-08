@@ -93,6 +93,32 @@ INSERT INTO `categories` VALUES (1,'Обувь'),(2,'Одежда');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `favourites_good`
+--
+
+DROP TABLE IF EXISTS `favourites_good`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `favourites_good` (
+  `user_email` varchar(70) NOT NULL,
+  `good_article` varchar(8) NOT NULL,
+  PRIMARY KEY (`user_email`,`good_article`),
+  KEY `fk_good_fav_idx` (`good_article`),
+  CONSTRAINT `fk_good_fav` FOREIGN KEY (`good_article`) REFERENCES `goods` (`good_article`),
+  CONSTRAINT `fk_user_fav` FOREIGN KEY (`user_email`) REFERENCES `users` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `favourites_good`
+--
+
+LOCK TABLES `favourites_good` WRITE;
+/*!40000 ALTER TABLE `favourites_good` DISABLE KEYS */;
+/*!40000 ALTER TABLE `favourites_good` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `good_size`
 --
 
@@ -302,4 +328,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-08  0:17:54
+-- Dump completed on 2025-09-08 14:46:28
