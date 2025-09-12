@@ -1,6 +1,7 @@
 <script setup>
     import SliderElement from '../components/SliderElement.vue'
     import GoodCardElement from '../components/GoodCardElement.vue'
+    import FooterElement from '@/components/FooterElement.vue'
 </script>
 
 <template>
@@ -16,6 +17,7 @@
         </a>
       </div>
       <div class="cards-goods" style="margin-top: 10px;">
+            <GoodCardElement/>
             <GoodCardElement/>
             <GoodCardElement/>
             <GoodCardElement/>
@@ -38,7 +40,7 @@
             <GoodCardElement/>
             <GoodCardElement/>
             <GoodCardElement/>
-        
+            <GoodCardElement/>
       </div>
     </div>
 </template>
@@ -61,6 +63,7 @@
 
 .title-goods a {
   text-decoration: underline;
+  text-underline-offset: 5px;
   transition: all 0.6s ease;
   color: white;
   cursor: pointer;
