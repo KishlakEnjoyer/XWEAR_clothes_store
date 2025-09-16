@@ -83,6 +83,11 @@ background: none;
 }
 
 .dropdown-item:last-child {
-  border-bottom: 1px solid white;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.dropdown {
+  background-color: #232323;
+  border-radius: 10px;
 }
 </style>

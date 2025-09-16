@@ -11,23 +11,32 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
+      meta: { title: 'XWEAR — Главная' }
     },
     {
       path: '/shoes',
       name: 'shoes',
       component: ShoesView,
+      meta: { title: 'XWEAR — Обувь' }
     },
     {
       path: '/clothes',
       name: 'clothes',
       component: ClothesView,
+      meta: { title: 'XWEAR — Одежда' }
     },
     {
       path: '/brands',
       name: 'brands',
       component: BrandsView,
+      meta: { title: 'XWEAR — Бренды' }
     }
   ],
+})
+
+router.afterEach((to) => {
+  // Устанавливаем title из meta, если есть, иначе дефолтный
+  document.title = to.meta.title || 'Мой сайт'
 })
 
 export default router
