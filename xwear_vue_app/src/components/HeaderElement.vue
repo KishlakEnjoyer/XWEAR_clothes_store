@@ -27,42 +27,13 @@
         </RouterLink>
       </div>
       <nav class="header-navigation">
-        <div class="dropdown">
           <RouterLink to="/clothes" data-text="Одежда">Одежда</RouterLink>
-          <div class="dropdown-menu">
-            <RouterLink to="/clothes/men">Мужская</RouterLink>
-            <RouterLink to="/clothes/women">Женская</RouterLink>
-            <RouterLink to="/clothes/kids">Детская</RouterLink>
-            <RouterLink to="/clothes/sport">Спортивная</RouterLink>
-          </div>
-        </div>
-        <div class="dropdown">
+         
           <RouterLink to="/shoes" data-text="Обувь">Обувь</RouterLink>
-          <div class="dropdown-menu">
-            <RouterLink to="/shoes/men">Мужская</RouterLink>
-            <RouterLink to="/shoes/women">Женская</RouterLink>
-            <RouterLink to="/shoes/kids">Детская</RouterLink>
-            <RouterLink to="/shoes/sneakers">Кроссовки</RouterLink>
-          </div>
-        </div>
-        <div class="dropdown">
+          
           <RouterLink to="/brands" data-text="Бренды">Бренды</RouterLink>
-          <div class="dropdown-menu">
-            <RouterLink to="/brands/nike">Nike</RouterLink>
-            <RouterLink to="/brands/adidas">Adidas</RouterLink>
-            <RouterLink to="/brands/puma">Puma</RouterLink>
-            <RouterLink to="/brands/zara">Zara</RouterLink>
-          </div>
-        </div>        
-        <div class="dropdown">
+          
           <RouterLink to="/info" data-text="Информация">Информация</RouterLink>
-          <div class="dropdown-menu">
-            <RouterLink to="/info/delivery">Доставка</RouterLink>
-            <RouterLink to="/info/returns">Возврат</RouterLink>
-            <RouterLink to="/info/contacts">Контакты</RouterLink>
-            <RouterLink to="/info/about">О нас</RouterLink>
-          </div>
-        </div>      
       </nav>
       <div class="headers-icons">
         <!--Search-->
@@ -213,53 +184,4 @@ a {
     transition: all 0.6s ease;
   }
 }
-
-
-/* Dropdown container */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown menu */
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0; /* Стартует от левого края родителя */
-  background: #111;
-  min-width: 180px;
-  padding: 12px 0;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  z-index: 1000;
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 8px 16px;
-  color: #ccc;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: normal;
-  transition: all 0.2s ease;
-}
-
-.dropdown-menu a:hover {
-  color: #72cdfa;
-  background: #222;
-}
-
-/* Show dropdown on hover */
-.dropdown:hover .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-
-
 </style>
