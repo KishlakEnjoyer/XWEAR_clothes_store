@@ -69,17 +69,19 @@ background: none;
   background: none;
   border: none;
   overflow-y: auto;
+  transition: all 0.6s ease;
+
 }
 
 .dropdown-item {
   padding: 12px 16px;
   cursor: pointer;
-  transition: background 0.2s;
-}
-
-.dropdown-item:hover {
-  background-color: #f5f5f5;
-  color: black;
+  transition: all 0.6s ease;
+  &:hover {
+    background-color: #f5f5f5;
+    color: black;
+    transition: all 0.6s ease;
+  }
 }
 
 .dropdown-item:last-child {
@@ -89,5 +91,7 @@ background: none;
 .dropdown {
   background-color: #232323;
   border-radius: 10px;
+  transition: all 0.6s ease;
+
 }
 </style>

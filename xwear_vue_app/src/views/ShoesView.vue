@@ -97,12 +97,20 @@ import { RouterLink } from "vue-router";
   align-items: center;
 }
 
+
+
 .shoes-mainpart {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 колонки */
-  gap: 16px; /* Промежуток между карточками */
-  padding: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  row-gap: 25px;
+  padding: 16px 0;
 }
+
+.shoes-mainpart > * {
+  justify-self: center;
+}
+
 
 
 .sort_select {
