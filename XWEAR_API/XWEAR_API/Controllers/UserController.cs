@@ -43,7 +43,6 @@ public class UserController : ControllerBase
     {
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == _changeEmail);
         if (user == null) return NotFound("Пользователь не найден");
-        if (await _context.Users.AnyAsync(u => u.Email != _changeEmail)) return BadRequest("Ник уже используется");
         user.Nickname = _newNickname;
         await _context.SaveChangesAsync();
         return Ok("Ник изменён");

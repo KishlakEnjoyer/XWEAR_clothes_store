@@ -30,9 +30,9 @@
           <RouterLink to="/clothes" data-text="Одежда">Одежда</RouterLink>
          
           <RouterLink to="/shoes" data-text="Обувь">Обувь</RouterLink>
-          
-          <RouterLink to="/brands" data-text="Бренды">Бренды</RouterLink>
-          
+                    
+          <RouterLink to="/accessories" data-text="Аксессуары">Аксессуары</RouterLink>
+
           <RouterLink to="/info" data-text="Информация">Информация</RouterLink>
       </nav>
       <div class="headers-icons">

@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "XDl7gmCvM8Ez13+MIp68un2ubuqip3rPJkSTBO6LlCo=",
+  "Hash": "6G6aqUn4v5X+bt2y0SdDl8v6jZtf8bCvZ/WKarVLuwo=",
   "Source": "XWEAR_API",
   "BasePath": "_content/XWEAR_API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

@@ -1,19 +1,104 @@
 <template>
-    <div class="good-card">
-          <svg class="star-good" width="22" height="20" viewBox="0 0 20 18" fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
+  <div v-if="goodData" class="good-card">
+    <div v-if="loading">Загрузка...</div>
+    <div v-else-if="error">Ошибка: {{ error }}</div>
+    <div v-else>
+      <svg class="star-good" width="22" height="20" viewBox="0 0 20 18" fill="currentColor"
+           xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
               d="M10.0998 0C10.4032 0 10.6804 0.171547 10.8158 0.442994L13.2554 5.33528L18.7134 6.11815C19.0159 6.16154 19.2673 6.37351 19.3612 6.66436C19.455 6.95522 19.375 7.27414 19.1549 7.48618L15.2046 11.2917L16.1357 16.6634C16.1876 16.9632 16.065 17.2665 15.8193 17.446C15.5736 17.6255 15.2473 17.65 14.9775 17.5093L10.1054 14.9684L5.2215 17.5097C4.95169 17.6501 4.6256 17.6253 4.38007 17.4458C4.13453 17.2663 4.01204 16.9631 4.06398 16.6634L4.99504 11.2917L1.0448 7.48618C0.824691 7.27414 0.744629 6.95522 0.838486 6.66436C0.932342 6.37351 1.18371 6.16154 1.48624 6.11815L6.9443 5.33528L9.3839 0.442994C9.51927 0.171547 9.7965 0 10.0998 0ZM10.0998 2.59269L8.18897 6.42463C8.07176 6.65969 7.84663 6.82223 7.58664 6.85952L3.33368 7.46954L6.41082 10.4339C6.602 10.6181 6.68937 10.8851 6.64403 11.1467L5.91645 15.3444L9.73651 13.3567C9.9682 13.2361 10.2441 13.2363 10.4757 13.357L14.2829 15.3426L13.5556 11.1467C13.5103 10.8851 13.5977 10.6181 13.7888 10.4339L16.866 7.46954L12.613 6.85952C12.353 6.82223 12.1279 6.65969 12.0107 6.42463L10.0998 2.59269Z"
               fill="currentColor"></path>
-          </svg>
-          <img src="../assets/images/shoes/nike_court_zoom_cage_2.png" alt="shoes-image">
-          <p id="good-name">NIKE COURT ZOOM CAGE 2</p>
-          <p id="good-price">от 4 699 ₱</p>
-        </div>
+      </svg>
+
+      <img :src="getImageUrl(goodData.imagePath)" :alt="`${goodData.brand?.name || 'Товар'} ${goodData.model?.name || ''}`">
+
+      <p id="good-name">{{ goodData.brandName || 'Неизвестный бренд' }} {{ goodData.modelName || 'Неизвестная модель' }}</p>
+      
+      <p id="good-price">от {{ minPrice }} ₽</p>
+    </div>
+  </div>
+
+  <div v-else>
+    Товар не найден или данные недоступны.
+  </div>
 </template>
+
 <script>
+export default {
+  name: 'GoodCardElement', // Убедитесь, что имя совпадает с импортом в HomeView
+  props: {
+    article: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      goodData: null,
+      loading: true,
+      error: null
+    }
+  },
+  computed: {
+    minPrice() {
+      const sizes = this.goodData?.sizes;
+      if (sizes && sizes.length > 0) {
+        const prices = sizes.map(size => size.price);
+        if (prices.length > 0) {
+          return Math.min(...prices);
+        }
+      }
+      return 'N/A';
+    }
+  },
+  methods: {
+    async fetchGoodData() {
+      this.loading = true;
+      this.error = null;
+      this.goodData = null;
+
+      try {
+        const response = await fetch(`http://localhost:5289/api/Good/${this.article}`);
+
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error('Товар не найден.');
+          } else {
+            throw new Error(`Ошибка API: ${response.status} ${response.statusText}`);
+          }
+        }
+
+        const data = await response.json();
+        this.goodData = data;
+      } catch (err) {
+        console.error("Ошибка при получении данных товара:", err);
+        this.error = err.message || 'Произошла ошибка при загрузке данных.';
+      } finally {
+        this.loading = false;
+      }
+    },
+    getImageUrl(path) {
+      if (!path) return ''; 
+      return path;
+    }
+  },
+  mounted() {
+    this.fetchGoodData();
+  },
+  watch: {
+    article: {
+      handler(newArticle) {
+        if (newArticle) {
+          this.fetchGoodData();
+        }
+      },
+      immediate: true
+    }
+  }
+}
 </script>
-<style>
+
+<style scoped>
     .good-card {
   position: relative;
   display: flex;
@@ -43,14 +128,10 @@
 
   &:hover {
     transform: scale(1.3);
-    /* Увеличиваем на 30% */
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 1)) drop-shadow(0 0 12px rgba(0, 255, 234, 0.8));
-    /* Добавляем золотой отсвет */
     color: #72cdfa;
-    /* Меняем цвет на золотой */
   }
 }
-
 
 #good-name {
   font-weight: bold;

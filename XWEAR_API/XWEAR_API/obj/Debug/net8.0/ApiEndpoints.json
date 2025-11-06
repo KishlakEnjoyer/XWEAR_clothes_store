@@ -1,0 +1,127 @@
+[
+  {
+    "ContainingType": "XWEAR_API.Controllers.GoodController",
+    "Method": "GetGoodByArticle",
+    "RelativePath": "api/Good/{article}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "article",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "XWEAR_API.Controllers.GoodController",
+    "Method": "GetAllGoods",
+    "RelativePath": "api/Good/GetAllGoods",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "XWEAR_API.Controllers.UserController",
+    "Method": "ChangeNickname",
+    "RelativePath": "api/User/change-nickname",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "_changeEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "_newNickname",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "XWEAR_API.Controllers.UserController",
+    "Method": "ChangePassword",
+    "RelativePath": "api/User/change-password",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "_oldPass",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "_email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "_newPass",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "XWEAR_API.Controllers.UserController",
+    "Method": "Login",
+    "RelativePath": "api/User/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "_logEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "_logPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "XWEAR_API.Controllers.UserController",
+    "Method": "Register",
+    "RelativePath": "api/User/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "_email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "_phone",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "_nickname",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "_password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

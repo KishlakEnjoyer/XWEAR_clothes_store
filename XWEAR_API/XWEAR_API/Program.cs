@@ -1,17 +1,24 @@
-using XWEAR_API.Models; // Убедитесь, что пространство имён правильное
-using Microsoft.EntityFrameworkCore; // Необходимо для UseMySql
-using Pomelo.EntityFrameworkCore.MySql; // Необходимо для UseMySql
-
+using XWEAR_API.Models;
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Добавляем DbContext для MySQL
 builder.Services.AddDbContext<XwearDbContext>(options =>
     options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection") // Рекомендуется хранить строку подключения здесь
-        ?? "server=localhost;user=root;password=root;database=xwear_db", // Резервная строка, как в вашем XwearDbContext.cs
-        new MySqlServerVersion(new Version(9, 0, 1)) // Укажите версию вашего MySQL сервера, как в вашем файле
+        builder.Configuration.GetConnectionString("DefaultConnection")
+        ?? "server=localhost;user=root;password=root;database=xwear_db", 
+        new MySqlServerVersion(new Version(9, 0, 1)) 
     ));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -28,5 +35,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+
+app.UseCors("AllowAll");
 
 app.Run();

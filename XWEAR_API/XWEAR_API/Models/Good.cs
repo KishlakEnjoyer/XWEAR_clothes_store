@@ -13,6 +13,8 @@ public partial class Good
 
     public int CategoryId { get; set; }
 
+    public int SubcatId { get; set; }
+
     public virtual Brand Brand { get; set; } = null!;
 
     public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
@@ -24,6 +26,8 @@ public partial class Good
     public virtual Image? Image { get; set; }
 
     public virtual Model Model { get; set; } = null!;
+
+    public virtual Subcategory Subcat { get; set; } = null!;
 
     public virtual ICollection<TransactionsDetail> TransactionsDetails { get; set; } = new List<TransactionsDetail>();
 

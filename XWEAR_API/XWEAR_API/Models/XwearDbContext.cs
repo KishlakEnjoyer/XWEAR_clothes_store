@@ -30,6 +30,8 @@ public partial class XwearDbContext : DbContext
 
     public virtual DbSet<Model> Models { get; set; }
 
+    public virtual DbSet<Subcategory> Subcategories { get; set; }
+
     public virtual DbSet<Transaction> Transactions { get; set; }
 
     public virtual DbSet<TransactionsDetail> TransactionsDetails { get; set; }
@@ -38,7 +40,7 @@ public partial class XwearDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=xwear_db", Microsoft.EntityFrameworkCore.ServerVersion.Parse("9.0.1-mysql"));
+        => optionsBuilder.UseMySql("server=localhost;user=root;password=root;database=xwear_db", Microsoft.EntityFrameworkCore.ServerVersion.Parse("9.1.0-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -98,13 +100,35 @@ public partial class XwearDbContext : DbContext
             entity.Property(e => e.CategoryName)
                 .HasMaxLength(70)
                 .HasColumnName("category_name");
+
+            entity.HasMany(d => d.IdSubcategories).WithMany(p => p.IdCategories)
+                .UsingEntity<Dictionary<string, object>>(
+                    "CatSubcat",
+                    r => r.HasOne<Subcategory>().WithMany()
+                        .HasForeignKey("IdSubcategory")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("fkSubcategort"),
+                    l => l.HasOne<Category>().WithMany()
+                        .HasForeignKey("IdCategory")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("fkCategory"),
+                    j =>
+                    {
+                        j.HasKey("IdCategory", "IdSubcategory")
+                            .HasName("PRIMARY")
+                            .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+                        j.ToTable("cat_subcat");
+                        j.HasIndex(new[] { "IdSubcategory" }, "fkSubcategort_idx");
+                        j.IndexerProperty<int>("IdCategory").HasColumnName("idCategory");
+                        j.IndexerProperty<int>("IdSubcategory").HasColumnName("idSubcategory");
+                    });
         });
 
         modelBuilder.Entity<Good>(entity =>
         {
-            entity.HasKey(e => new { e.GoodArticle, e.ModelId, e.CategoryId, e.BrandId })
+            entity.HasKey(e => new { e.GoodArticle, e.ModelId, e.CategoryId, e.BrandId, e.SubcatId })
                 .HasName("PRIMARY")
-                .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0, 0, 0 });
+                .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0, 0, 0, 0 });
 
             entity.ToTable("goods");
 
@@ -114,6 +138,8 @@ public partial class XwearDbContext : DbContext
 
             entity.HasIndex(e => e.ModelId, "fk_model_idx");
 
+            entity.HasIndex(e => e.SubcatId, "fk_sucat_idx");
+
             entity.HasIndex(e => e.GoodArticle, "good_article_UNIQUE").IsUnique();
 
             entity.Property(e => e.GoodArticle)
@@ -122,6 +148,7 @@ public partial class XwearDbContext : DbContext
             entity.Property(e => e.ModelId).HasColumnName("model_id");
             entity.Property(e => e.CategoryId).HasColumnName("category_id");
             entity.Property(e => e.BrandId).HasColumnName("brand_id");
+            entity.Property(e => e.SubcatId).HasColumnName("subcat_id");
 
             entity.HasOne(d => d.Brand).WithMany(p => p.Goods)
                 .HasForeignKey(d => d.BrandId)
@@ -137,6 +164,11 @@ public partial class XwearDbContext : DbContext
                 .HasForeignKey(d => d.ModelId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_model");
+
+            entity.HasOne(d => d.Subcat).WithMany(p => p.Goods)
+                .HasForeignKey(d => d.SubcatId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_subcat");
         });
 
         modelBuilder.Entity<GoodSize>(entity =>
@@ -195,6 +227,18 @@ public partial class XwearDbContext : DbContext
             entity.Property(e => e.ModelName)
                 .HasMaxLength(70)
                 .HasColumnName("model_name");
+        });
+
+        modelBuilder.Entity<Subcategory>(entity =>
+        {
+            entity.HasKey(e => e.SubcatId).HasName("PRIMARY");
+
+            entity.ToTable("subcategories");
+
+            entity.Property(e => e.SubcatId).HasColumnName("subcatId");
+            entity.Property(e => e.SubcatName)
+                .HasMaxLength(50)
+                .HasColumnName("subcatName");
         });
 
         modelBuilder.Entity<Transaction>(entity =>

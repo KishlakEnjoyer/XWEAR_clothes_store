@@ -1,29 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "Z:\\XWEAR_clothes_store\\XWEAR_API\\",
+  "WorkspaceRootPath": "D:\\XWEAR_clothes_store\\XWEAR_API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|z:\\xwear_clothes_store\\xwear_api\\xwear_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|d:\\xwear_clothes_store\\xwear_api\\xwear_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|solutionrelative:xwear_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|z:\\xwear_clothes_store\\xwear_api\\xwear_api\\models\\xweardbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|solutionrelative:xwear_api\\models\\xweardbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|z:\\xwear_clothes_store\\xwear_api\\xwear_api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|d:\\xwear_clothes_store\\xwear_api\\xwear_api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|solutionrelative:xwear_api\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|z:\\xwear_clothes_store\\xwear_api\\xwear_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|solutionrelative:xwear_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|z:\\xwear_clothes_store\\xwear_api\\xwear_api\\models\\good.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|d:\\xwear_clothes_store\\xwear_api\\xwear_api\\models\\good.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|solutionrelative:xwear_api\\models\\good.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|z:\\xwear_clothes_store\\xwear_api\\xwear_api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "AbsoluteMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|d:\\xwear_clothes_store\\xwear_api\\xwear_api\\models\\xweardbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|solutionrelative:xwear_api\\models\\xweardbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|d:\\xwear_clothes_store\\xwear_api\\xwear_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|solutionrelative:xwear_api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|d:\\xwear_clothes_store\\xwear_api\\xwear_api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{8D7280A6-F35C-4132-ABA7-6FECF21CD188}|XWEAR_API\\XWEAR_API.csproj|solutionrelative:xwear_api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
@@ -50,10 +50,6 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
@@ -71,6 +67,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Bookmark",
@@ -94,74 +94,79 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "Z:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Program.cs",
+              "DocumentMoniker": "D:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Program.cs",
               "RelativeDocumentMoniker": "XWEAR_API\\Program.cs",
-              "ToolTip": "Z:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Program.cs",
+              "ToolTip": "D:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Program.cs",
               "RelativeToolTip": "XWEAR_API\\Program.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAkwA4AAAAhAAAA",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-05T20:12:22.295Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Good.cs",
-              "DocumentMoniker": "Z:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Models\\Good.cs",
+              "DocumentMoniker": "D:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Models\\Good.cs",
               "RelativeDocumentMoniker": "XWEAR_API\\Models\\Good.cs",
-              "ToolTip": "Z:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Models\\Good.cs",
+              "ToolTip": "D:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Models\\Good.cs",
               "RelativeToolTip": "XWEAR_API\\Models\\Good.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAoAAAA",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAzwCAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T19:43:12.191Z"
+              "WhenOpened": "2025-11-05T19:43:12.191Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "ProductsController.cs",
-              "DocumentMoniker": "Z:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Controllers\\ProductsController.cs",
+              "DocumentMoniker": "D:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "XWEAR_API\\Controllers\\ProductsController.cs",
-              "ToolTip": "Z:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Controllers\\ProductsController.cs",
+              "ToolTip": "D:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Controllers\\ProductsController.cs",
               "RelativeToolTip": "XWEAR_API\\Controllers\\ProductsController.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAAAD8AAAAYAAAA",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAmwFIAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T19:37:12.272Z"
+              "WhenOpened": "2025-11-05T19:37:12.272Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Dockerfile",
-              "DocumentMoniker": "Z:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Dockerfile",
+              "DocumentMoniker": "D:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Dockerfile",
               "RelativeDocumentMoniker": "XWEAR_API\\Dockerfile",
-              "ToolTip": "Z:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Dockerfile",
+              "ToolTip": "D:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Dockerfile",
               "RelativeToolTip": "XWEAR_API\\Dockerfile",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAYAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-11-05T19:35:37.629Z"
+              "WhenOpened": "2025-11-05T19:35:37.629Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "Z:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "XWEAR_API\\Controllers\\UserController.cs",
-              "ToolTip": "Z:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Controllers\\UserController.cs",
-              "RelativeToolTip": "XWEAR_API\\Controllers\\UserController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAAgAAAA",
+              "Title": "XwearDbContext.cs",
+              "DocumentMoniker": "D:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Models\\XwearDbContext.cs",
+              "RelativeDocumentMoniker": "XWEAR_API\\Models\\XwearDbContext.cs",
+              "ToolTip": "D:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Models\\XwearDbContext.cs",
+              "RelativeToolTip": "XWEAR_API\\Models\\XwearDbContext.cs",
+              "ViewState": "AgIAAGwBAAAAAAAAAAAYwIABAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T19:13:06.103Z"
+              "WhenOpened": "2025-11-05T18:51:25.425Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "XwearDbContext.cs",
-              "DocumentMoniker": "Z:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Models\\XwearDbContext.cs",
-              "RelativeDocumentMoniker": "XWEAR_API\\Models\\XwearDbContext.cs",
-              "ToolTip": "Z:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Models\\XwearDbContext.cs",
-              "RelativeToolTip": "XWEAR_API\\Models\\XwearDbContext.cs",
-              "ViewState": "AQIAAEABAAAAAAAAAAAYwFQBAAAAAAAA",
+              "DocumentIndex": 4,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "XWEAR_API\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\XWEAR_clothes_store\\XWEAR_API\\XWEAR_API\\Controllers\\UserController.cs",
+              "RelativeToolTip": "XWEAR_API\\Controllers\\UserController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAgwCsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T18:51:25.425Z"
+              "WhenOpened": "2025-11-05T19:13:06.103Z",
+              "EditorCaption": ""
             }
           ]
         },
@@ -172,10 +177,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             }
           ]
         }

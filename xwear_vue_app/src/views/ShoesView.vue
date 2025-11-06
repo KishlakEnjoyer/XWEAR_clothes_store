@@ -2,8 +2,51 @@
 import GoodCardElement from "../components/GoodCardElement.vue";
 import DropdowncategoryElement from "@/components/DropdowncategoryElement.vue";
 import { RouterLink } from "vue-router";
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
 
+// Состояния для данных и загрузки
+const shoesGoods = ref([]); // Хранит только товары "Обувь"
+const loading = ref(true);
+const error = ref(null);
+const totalShoesCount = ref(0); // Для отображения количества
 
+// Функция для получения товаров "Обувь" с API
+async function fetchShoes() {
+  loading.value = true;
+  error.value = null;
+  shoesGoods.value = [];
+
+  try {
+    // Замените URL на ваш API-эндпоинт, который возвращает товары по категории
+    // Предположим, у вас есть эндпоинт вроде /api/Good/GetByCategory?categoryName=Обувь
+    // или вы фильтруете на клиенте, как в HomeView.vue
+    // Вариант 1: Если API предоставляет фильтрацию по категории:
+    // const response = await axios.get('http://localhost:5289/api/Good/GetByCategory?categoryName=Обувь');
+
+    // Вариант 2: Получаем все и фильтруем на клиенте (как в HomeView.vue)
+    const response = await axios.get('http://localhost:5289/api/Good/GetAllGoods');
+    const allGoods = response.data;
+    shoesGoods.value = allGoods.filter(item => item.category?.name?.toLowerCase().includes('обувь'));
+    totalShoesCount.value = shoesGoods.value.length;
+
+  } catch (err) {
+    console.error("Ошибка при получении товаров обуви:", err);
+    if (err.response) {
+      error.value = `Ошибка API: ${err.response.status} ${err.response.statusText}`;
+    } else if (err.request) {
+      error.value = 'Не удалось получить ответ от сервера.';
+    } else {
+      error.value = err.message || 'Произошла ошибка при загрузке товаров.';
+    }
+  } finally {
+    loading.value = false;
+  }
+}
+
+onMounted(() => {
+  fetchShoes();
+});
 </script>
 
 <template>
@@ -21,7 +64,8 @@ import { RouterLink } from "vue-router";
         <div class="shoes-upside">
           <div class="shoes-title-count">
             <h2>ОБУВЬ</h2>
-            <p>0 товаров</p>
+            <p v-if="!loading">{{ totalShoesCount }} товаров</p>
+            <p v-else>Загрузка...</p>
           </div>
           <div class="shoes-sort">
             <p class="sort_par">
@@ -35,18 +79,26 @@ import { RouterLink } from "vue-router";
             </p>
           </div>
         </div>
-        <div class="shoes-mainpart">
-          <GoodCardElement />
-          <GoodCardElement />
-          <GoodCardElement />
-          <GoodCardElement />
-          <GoodCardElement />
-          <GoodCardElement />
-          <GoodCardElement />
-          <GoodCardElement />
+        <!-- Индикатор загрузки -->
+        <div v-if="loading" class="loading">Загрузка товаров обуви...</div>
+        <!-- Сообщение об ошибке -->
+        <div v-else-if="error" class="error">Ошибка: {{ error }}</div>
+        <!-- Основная часть с товарами -->
+        <div v-else class="shoes-mainpart">
+          <!-- Рендерим карточки только если есть товары -->
+          <GoodCardElement
+            v-for="good in shoesGoods"
+            :key="good.article"
+            :article="good.article"
+          />
+          <!-- Если товаров нет -->
+          <div v-if="shoesGoods.length === 0" class="no-goods-message">
+            <p>Нет товаров в категории "Обувь".</p>
+          </div>
         </div>
+        <!-- Пагинация (пока пусто) -->
         <div class="paginaion">
-
+          <!-- Здесь будет компонент пагинации -->
         </div>
       </div>
     </div>
@@ -97,8 +149,6 @@ import { RouterLink } from "vue-router";
   align-items: center;
 }
 
-
-
 .shoes-mainpart {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -110,8 +160,6 @@ import { RouterLink } from "vue-router";
 .shoes-mainpart > * {
   justify-self: center;
 }
-
-
 
 .sort_select {
   font-family: RF_Dewi;
@@ -135,5 +183,13 @@ import { RouterLink } from "vue-router";
 
 .sort_par option:last-child {
   border-radius: 0px 0px 10px 10px;
+}
+
+/* Дополнительные стили для загрузки и ошибки */
+.loading, .error, .no-goods-message {
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+  grid-column: 1 / -1; /* Растягиваем на всю ширину сетки */
 }
 </style>

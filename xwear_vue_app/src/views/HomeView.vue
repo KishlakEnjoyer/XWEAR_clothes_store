@@ -4,23 +4,70 @@ import GoodCardElement from '../components/GoodCardElement.vue';
 import FooterElement from '@/components/FooterElement.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
-// При необходимости импортируйте модули Swiper (например, Navigation, Pagination)
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
+import { ref, onMounted } from 'vue';
+import axios from 'axios'; // Импортируем axios
 
-// Если вы хотите использовать навигацию (стрелки), раскомментируйте:
-// import { Navigation } from 'swiper/modules';
-// Swiper.use([Navigation]);
+// Состояния для данных и загрузки
+const allGoods = ref([]); // Хранит все товары
+const shoes = ref([]); // Товары категории "Обувь"
+const clothes = ref([]); // Товары категории "Одежда"
+const accessories = ref([]); // Товары категории "Аксессуары"
+const loading = ref(true); // Индикатор загрузки
+const error = ref(null); // Сообщение об ошибке
+
+// Функция для получения данных с API
+async function fetchGoods() {
+  loading.value = true;
+  error.value = null;
+
+  try {
+    // Используем axios для GET-запроса
+    const response = await axios.get('http://localhost:5289/api/Good/GetAllGoods');
+
+    // axios автоматически парсит JSON, данные находятся в response.data
+    allGoods.value = response.data;
+
+    // Фильтрация товаров по категориям
+    // Теперь обращаемся к item.category.name
+    shoes.value = allGoods.value.filter(item => item.category?.name?.toLowerCase().includes('обувь'));
+    clothes.value = allGoods.value.filter(item => item.category?.name?.toLowerCase().includes('одежда'));
+    accessories.value = allGoods.value.filter(item => item.category?.name?.toLowerCase().includes('аксессуар'));
+  } catch (err) {
+    console.error("Ошибка при получении товаров:", err);
+    // Обработка ошибки axios
+    if (err.response) {
+      // Сервер ответил с кодом ошибки (4xx, 5xx)
+      error.value = `Ошибка API: ${err.response.status} ${err.response.statusText}`;
+    } else if (err.request) {
+      // Запрос был отправлен, но не получен ответ (например, проблема с сетью)
+      error.value = 'Не удалось получить ответ от сервера.';
+    } else {
+      // Ошибка при настройке запроса
+      error.value = err.message || 'Произошла ошибка при загрузке товаров.';
+    }
+  } finally {
+    loading.value = false;
+  }
+}
+
+onMounted(() => {
+  fetchGoods();
+});
 </script>
 
 <template>
   <SliderElement />
 
+  <!-- Индикатор загрузки -->
+  <div v-if="loading" class="loading">Загрузка товаров...</div>
+  <!-- Сообщение об ошибке -->
+  <div v-else-if="error" class="error">Ошибка: {{ error }}</div>
+
   <!-- Обувь -->
-  <div class="goods-container">
+  <div v-else class="goods-container">
     <div class="title-goods">
       <h2>ОБУВЬ</h2>
-      <a>
+      <a href="#">
         БОЛЬШЕ ТОВАРОВ
         <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd"
@@ -39,20 +86,13 @@ import 'swiper/css';
       }"
       class="swiper-container"
     >
-      <SwiperSlide>
-        <GoodCardElement />
+      <!-- Рендерим слайды только если есть товары -->
+      <SwiperSlide v-for="good in shoes" :key="good.article"> <!-- Обновлено: good.article -->
+        <GoodCardElement :article="good.article" /> <!-- Обновлено: good.article -->
       </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
-      </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
-      </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
-      </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
+      <!-- Если товаров нет -->
+      <SwiperSlide v-if="shoes.length === 0">
+        <p>Нет товаров в этой категории.</p>
       </SwiperSlide>
     </Swiper>
   </div>
@@ -61,7 +101,7 @@ import 'swiper/css';
   <div class="goods-container">
     <div class="title-goods">
       <h2>ОДЕЖДА</h2>
-      <a>
+      <a href="#">
         БОЛЬШЕ ТОВАРОВ
         <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd"
@@ -80,20 +120,11 @@ import 'swiper/css';
       }"
       class="swiper-container"
     >
-      <SwiperSlide>
-        <GoodCardElement />
+      <SwiperSlide v-for="good in clothes" :key="good.article"> <!-- Обновлено: good.article -->
+        <GoodCardElement :article="good.article" /> <!-- Обновлено: good.article -->
       </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
-      </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
-      </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
-      </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
+      <SwiperSlide v-if="clothes.length === 0">
+        <p>Нет товаров в этой категории.</p>
       </SwiperSlide>
     </Swiper>
   </div>
@@ -102,7 +133,7 @@ import 'swiper/css';
   <div class="goods-container">
     <div class="title-goods">
       <h2>АКСЕССУАРЫ</h2>
-      <a>
+      <a href="#">
         БОЛЬШЕ ТОВАРОВ
         <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd"
@@ -121,34 +152,14 @@ import 'swiper/css';
       }"
       class="swiper-container"
     >
-      <SwiperSlide>
-        <GoodCardElement />
+      <SwiperSlide v-for="good in accessories" :key="good.article"> <!-- Обновлено: good.article -->
+        <GoodCardElement :article="good.article" /> <!-- Обновлено: good.article -->
       </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
-      </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
-      </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
-      </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
-      </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
-      </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
-      </SwiperSlide>
-      <SwiperSlide>
-        <GoodCardElement />
+      <SwiperSlide v-if="accessories.length === 0">
+        <p>Нет товаров в этой категории.</p>
       </SwiperSlide>
     </Swiper>
   </div>
-
-  <FooterElement />
 </template>
 
 <style scoped>
@@ -183,5 +194,11 @@ import 'swiper/css';
 .swiper-container {
   margin-top: 10px;
   padding: 20px 0;
+}
+
+.loading, .error {
+  text-align: center;
+  color: white;
+  margin-top: 20px;
 }
 </style>

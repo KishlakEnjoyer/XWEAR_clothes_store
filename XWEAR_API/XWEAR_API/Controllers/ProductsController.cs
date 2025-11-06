@@ -17,52 +17,81 @@ public class GoodController : ControllerBase
 
     // GET: api/Good/ABC123
     [HttpGet("{article}")]
-    public async Task<ActionResult<GoodDetailsDto>> GetGoodByArticle(string article)
+    public async Task<IActionResult> GetGoodByArticle(string article)
     {
-        var good = await _context.Goods
+        var goodDto = await _context.Goods
             .Include(g => g.Brand)
             .Include(g => g.Category)
             .Include(g => g.Model)
-            .Include(g => g.Image) 
+            .Include(g => g.Image)
             .Include(g => g.GoodSizes)
-            .FirstOrDefaultAsync(g => g.GoodArticle == article);
+            .Where(g => g.GoodArticle == article) 
+            .Select(g => new
+            {
+                Article = g.GoodArticle,
+                BrandName = g.Brand.BrandName,
+                ModelName = g.Model.ModelName,
+                CategoryName = g.Category.CategoryName,
+                ImagePath = g.Image.Patrh, 
+                Sizes = g.GoodSizes.Select(gs => new 
+                {
+                    Size = gs.Size,
+                    Price = (float)gs.Price
+                }).ToList()
+            })
+            .FirstOrDefaultAsync(); 
 
-        if (good == null)
+        if (goodDto == null)
         {
             return NotFound(new { message = "Товар не найден." });
         }
 
-        var dto = new GoodDetailsDto
-        {
-            Article = good.GoodArticle,
-            BrandName = good.Brand.BrandName,
-            ModelName = good.Model.ModelName,
-            CategoryName = good.Category.CategoryName,
-            ImagePath = good.Image?.Patrh, 
-            Sizes = good.GoodSizes.Select(gs => new GoodSizeDto
-            {
-                Size = gs.Size, 
-                Price = gs.Price 
-            }).ToList()
-        };
-
-        return Ok(dto);
+        return Ok(goodDto); 
     }
-}
 
+    [HttpGet("GetAllGoods")]
+    public async Task<IActionResult> GetAllGoods()
+    {
+        var goodsDtos = await _context.Goods
+            .Include(g => g.Brand)
+            .Include(g => g.Category)
+            .Include(g => g.Model)
+            .Include(g => g.Image)
+            .Include(g => g.GoodSizes)
+            .Select(g => new 
+            {
+                Article = g.GoodArticle,
 
-public class GoodDetailsDto
-{
-    public string Article { get; set; }
-    public string? BrandName { get; set; }
-    public string? ModelName { get; set; }
-    public string? CategoryName { get; set; }
-    public string? ImagePath { get; set; } 
-    public List<GoodSizeDto> Sizes { get; set; } = new List<GoodSizeDto>();
-}
+                Brand = g.Brand != null ? new
+                {
+                    Id = g.Brand.BrandId,
+                    Name = g.Brand.BrandName
+                } : null,
+                Category = g.Category != null ? new
+                {
+                    Id = g.Category.CategoryId,
+                    Name = g.Category.CategoryName
+                } : null,
+                Model = g.Model != null ? new
+                {
+                    Id = g.Model.ModelId,
+                    Name = g.Model.ModelName
+                } : null,
+                Image = g.Image != null ? new
+                {
+                    Article = g.Image.GoodArticle,
+                    Path = g.Image.Patrh, 
+                    Main = g.Image.Main
+                } : null,
+                GoodSizes = g.GoodSizes.Select(gs => new
+                {
+                    Article = gs.GoodArticle,
+                    Size = gs.Size,
+                    Price = (float)gs.Price
+                }).ToList()
+            })
+            .ToListAsync();
 
-public class GoodSizeDto
-{
-    public float Size { get; set; }
-    public float? Price { get; set; }
+        return Ok(goodsDtos);
+    }
 }
