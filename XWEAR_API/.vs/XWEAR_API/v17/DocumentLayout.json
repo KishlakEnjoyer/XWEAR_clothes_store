@@ -113,8 +113,7 @@
               "RelativeToolTip": "XWEAR_API\\Models\\Good.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAzwCAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T19:43:12.191Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-05T19:43:12.191Z"
             },
             {
               "$type": "Document",
@@ -126,8 +125,7 @@
               "RelativeToolTip": "XWEAR_API\\Controllers\\ProductsController.cs",
               "ViewState": "AgIAAEgAAAAAAAAAAAAmwFIAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T19:37:12.272Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-05T19:37:12.272Z"
             },
             {
               "$type": "Document",
@@ -139,8 +137,7 @@
               "RelativeToolTip": "XWEAR_API\\Dockerfile",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-11-05T19:35:37.629Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-05T19:35:37.629Z"
             },
             {
               "$type": "Document",
@@ -152,8 +149,7 @@
               "RelativeToolTip": "XWEAR_API\\Models\\XwearDbContext.cs",
               "ViewState": "AgIAAGwBAAAAAAAAAAAYwIABAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T18:51:25.425Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-05T18:51:25.425Z"
             },
             {
               "$type": "Document",
@@ -165,8 +161,7 @@
               "RelativeToolTip": "XWEAR_API\\Controllers\\UserController.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAgwCsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T19:13:06.103Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-05T19:13:06.103Z"
             }
           ]
         },

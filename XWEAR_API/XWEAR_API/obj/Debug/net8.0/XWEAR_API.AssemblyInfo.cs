@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("XWEAR_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4117a6c7383334044d79add141de3b014d4c6d6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+38b4c98cdf193466d6b8010c93f23d8081880d1a")]
 [assembly: System.Reflection.AssemblyProductAttribute("XWEAR_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("XWEAR_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
