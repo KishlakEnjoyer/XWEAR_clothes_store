@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import ShoesView from '../views/ShoesView.vue'
 import ClothesView from '@/views/ClothesView.vue'
 import AccessoryView from '@/views/AccessoryView.vue'
+import MoreView from '@/views/MoreView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,6 +13,12 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: { title: 'XWEAR — Главная' }
+    },
+    {
+      path: '/product/:articleGood',
+      name: 'product',
+      component: MoreView,
+      meta: { title: 'XWEAR — Продукт' }
     },
     {
       path: '/shoes',

@@ -1,21 +1,17 @@
 <template>
   <div class="dropdown-container">
     <div class="dropdown">
-      <!-- Кнопка-триггер -->
-      <button 
-        class="dropdown-toggle" 
-        @click="isOpen = !isOpen"
-      >
+      <button class="dropdown-toggle" @click="isOpen = !isOpen">
         КАТЕГОРИИ
         <span class="arrow" :class="{ rotated: isOpen }">▼</span>
       </button>
 
       <ul v-if="isOpen" class="dropdown-menu">
-        <li class="dropdown-item" >Кроссовки</li>
-        <li class="dropdown-item" >Кеды</li>
-        <li class="dropdown-item" >Лофферы</li>
-        <li class="dropdown-item" >Сандалии</li>
-        <li class="dropdown-item" >Шлепанцы</li>
+        <li class="dropdown-item">Кроссовки</li>
+        <li class="dropdown-item">Кеды</li>
+        <li class="dropdown-item">Лофферы</li>
+        <li class="dropdown-item">Сандалии</li>
+        <li class="dropdown-item">Шлепанцы</li>
       </ul>
     </div>
   </div>
@@ -23,20 +19,20 @@
 
 <script>
 export default {
-  name: 'Dropdown',
+  name: "Dropdown",
   data() {
     return {
-      isOpen: false
-    }
-  }
-}
+      isOpen: false,
+    };
+  },
+};
 </script>
 
 <style scoped>
 .dropdown-container {
-background: none;
+  background: none;
   width: 220px;
-  border:none;
+  border: none;
 }
 
 .dropdown-toggle {
@@ -70,7 +66,6 @@ background: none;
   border: none;
   overflow-y: auto;
   transition: all 0.6s ease;
-
 }
 
 .dropdown-item {
@@ -92,6 +87,5 @@ background: none;
   background-color: #232323;
   border-radius: 10px;
   transition: all 0.6s ease;
-
 }
 </style>

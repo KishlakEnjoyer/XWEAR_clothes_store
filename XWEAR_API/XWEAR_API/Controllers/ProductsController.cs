@@ -94,4 +94,55 @@ public class GoodController : ControllerBase
 
         return Ok(goodsDtos);
     }
+
+    [HttpGet("GetGoodById")]
+    public async Task<IActionResult> getGoodById(string goodId)
+    {
+        var goodFullInfo = await _context.Goods
+            .Include(g => g.Brand)
+            .Include(g => g.Category)
+            .Include(g => g.Model)
+            .Include(g => g.Image)
+            .Include(g => g.GoodSizes)
+            .Include(g => g.Subcat)
+            .Select(g => new
+            {
+                Article = g.GoodArticle,
+
+                Brand = g.Brand != null ? new
+                {
+                    Id = g.Brand.BrandId,
+                    Name = g.Brand.BrandName
+                } : null,
+                Category = g.Category != null ? new
+                {
+                    Id = g.Category.CategoryId,
+                    Name = g.Category.CategoryName
+                } : null,
+                Model = g.Model != null ? new
+                {
+                    Id = g.Model.ModelId,
+                    Name = g.Model.ModelName
+                } : null,
+                Image = g.Image != null ? new
+                {
+                    Article = g.Image.GoodArticle,
+                    Path = g.Image.Patrh,
+                    Main = g.Image.Main
+                } : null,
+                GoodSizes = g.GoodSizes.Select(gs => new
+                {
+                    Article = gs.GoodArticle,
+                    Size = gs.Size,
+                    Price = (float)gs.Price
+                }).ToList(),
+                Subcategory = g.Subcat != null ? new
+                {
+                    Id = g.Subcat.SubcatId,
+                    Name = g.Subcat.SubcatName
+                } : null
+            })
+            .FirstOrDefaultAsync(g => g.Article == goodId);
+        return Ok(goodFullInfo);
+    }
 }

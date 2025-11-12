@@ -159,6 +159,10 @@
 </template>
 
 <style scoped>
+a {
+  color: whitesmoke;
+  text-decoration: none;
+}
 .footer-container {
   display: flex;
   justify-content: space-around;

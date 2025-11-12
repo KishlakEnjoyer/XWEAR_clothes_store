@@ -1,26 +1,29 @@
 <template>
-    <div class="slider-container">
-      <div class="slide">
-        <img src="../assets/images/man1.jpg" alt="slide 1" style="transform: scaleX(-1);">
-        <div class="slide-content">
-          <h2 style="font-size: 38px;">ШИРОКИЙ<br>АССОРТИМЕНТ<br>ОДЕЖДЫ</h2>
-          <p>Одежда от известных брендов у нас в каталоге.<br>Только качественные вещи.</p>
-          <a href="#" class="catalog_btn">ПЕРЕЙТИ В КАТАЛОГ</a>
-        </div>
+  <div class="slider-container">
+    <div class="slide">
+      <img
+        src="../assets/images/man1.jpg"
+        alt="slide 1"
+        style="transform: scaleX(-1)"
+      />
+      <div class="slide-content">
+        <h2 style="font-size: 38px">ШИРОКИЙ<br />АССОРТИМЕНТ<br />ОДЕЖДЫ</h2>
+        <p>
+          Одежда от известных брендов у нас в каталоге.<br />Только качественные
+          вещи.
+        </p>
+        <a href="#" class="catalog_btn">ПЕРЕЙТИ В КАТАЛОГ</a>
       </div>
     </div>
+  </div>
 </template>
-<script>
-
-</script>
+<script></script>
 <style>
-    /* Slider */
 .slider-container {
   width: 85%;
   margin: 30px auto;
   height: 60vh;
   position: relative;
-  /* нужно для абсолютного позиционирования текста */
   overflow: hidden;
   border-radius: 10px;
 }

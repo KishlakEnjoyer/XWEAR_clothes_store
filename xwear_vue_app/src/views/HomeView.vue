@@ -5,44 +5,34 @@ import FooterElement from '@/components/FooterElement.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import { ref, onMounted } from 'vue';
-import axios from 'axios'; // Импортируем axios
+import axios from 'axios';
 
-// Состояния для данных и загрузки
-const allGoods = ref([]); // Хранит все товары
-const shoes = ref([]); // Товары категории "Обувь"
-const clothes = ref([]); // Товары категории "Одежда"
-const accessories = ref([]); // Товары категории "Аксессуары"
-const loading = ref(true); // Индикатор загрузки
-const error = ref(null); // Сообщение об ошибке
+const allGoods = ref([]); 
+const shoes = ref([]); 
+const clothes = ref([]);
+const accessories = ref([]);
+const loading = ref(true);
+const error = ref(null); 
 
-// Функция для получения данных с API
 async function fetchGoods() {
   loading.value = true;
   error.value = null;
 
   try {
-    // Используем axios для GET-запроса
     const response = await axios.get('http://localhost:5289/api/Good/GetAllGoods');
 
-    // axios автоматически парсит JSON, данные находятся в response.data
     allGoods.value = response.data;
 
-    // Фильтрация товаров по категориям
-    // Теперь обращаемся к item.category.name
     shoes.value = allGoods.value.filter(item => item.category?.name?.toLowerCase().includes('обувь'));
     clothes.value = allGoods.value.filter(item => item.category?.name?.toLowerCase().includes('одежда'));
     accessories.value = allGoods.value.filter(item => item.category?.name?.toLowerCase().includes('аксессуар'));
   } catch (err) {
     console.error("Ошибка при получении товаров:", err);
-    // Обработка ошибки axios
     if (err.response) {
-      // Сервер ответил с кодом ошибки (4xx, 5xx)
       error.value = `Ошибка API: ${err.response.status} ${err.response.statusText}`;
     } else if (err.request) {
-      // Запрос был отправлен, но не получен ответ (например, проблема с сетью)
       error.value = 'Не удалось получить ответ от сервера.';
     } else {
-      // Ошибка при настройке запроса
       error.value = err.message || 'Произошла ошибка при загрузке товаров.';
     }
   } finally {
@@ -58,12 +48,9 @@ onMounted(() => {
 <template>
   <SliderElement />
 
-  <!-- Индикатор загрузки -->
   <div v-if="loading" class="loading">Загрузка товаров...</div>
-  <!-- Сообщение об ошибке -->
   <div v-else-if="error" class="error">Ошибка: {{ error }}</div>
 
-  <!-- Обувь -->
   <div v-else class="goods-container">
     <div class="title-goods">
       <h2>ОБУВЬ</h2>
@@ -86,18 +73,15 @@ onMounted(() => {
       }"
       class="swiper-container"
     >
-      <!-- Рендерим слайды только если есть товары -->
-      <SwiperSlide v-for="good in shoes" :key="good.article"> <!-- Обновлено: good.article -->
-        <GoodCardElement :article="good.article" /> <!-- Обновлено: good.article -->
+      <SwiperSlide v-for="good in shoes" :key="good.article">
+        <GoodCardElement :article="good.article" /> 
       </SwiperSlide>
-      <!-- Если товаров нет -->
       <SwiperSlide v-if="shoes.length === 0">
         <p>Нет товаров в этой категории.</p>
       </SwiperSlide>
     </Swiper>
   </div>
 
-  <!-- Одежда -->
   <div class="goods-container">
     <div class="title-goods">
       <h2>ОДЕЖДА</h2>
@@ -120,8 +104,8 @@ onMounted(() => {
       }"
       class="swiper-container"
     >
-      <SwiperSlide v-for="good in clothes" :key="good.article"> <!-- Обновлено: good.article -->
-        <GoodCardElement :article="good.article" /> <!-- Обновлено: good.article -->
+      <SwiperSlide v-for="good in clothes" :key="good.article">
+        <GoodCardElement :article="good.article" /> 
       </SwiperSlide>
       <SwiperSlide v-if="clothes.length === 0">
         <p>Нет товаров в этой категории.</p>
@@ -129,7 +113,6 @@ onMounted(() => {
     </Swiper>
   </div>
 
-  <!-- Аксессуары -->
   <div class="goods-container">
     <div class="title-goods">
       <h2>АКСЕССУАРЫ</h2>
@@ -152,8 +135,8 @@ onMounted(() => {
       }"
       class="swiper-container"
     >
-      <SwiperSlide v-for="good in accessories" :key="good.article"> <!-- Обновлено: good.article -->
-        <GoodCardElement :article="good.article" /> <!-- Обновлено: good.article -->
+      <SwiperSlide v-for="good in accessories" :key="good.article"> 
+        <GoodCardElement :article="good.article" /> 
       </SwiperSlide>
       <SwiperSlide v-if="accessories.length === 0">
         <p>Нет товаров в этой категории.</p>
@@ -190,7 +173,6 @@ onMounted(() => {
   color: #72cdfa;
 }
 
-/* Стили для Swiper */
 .swiper-container {
   margin-top: 10px;
   padding: 20px 0;

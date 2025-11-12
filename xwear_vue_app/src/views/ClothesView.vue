@@ -5,26 +5,18 @@ import { RouterLink } from "vue-router";
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
-// Состояния для данных и загрузки
-const shoesGoods = ref([]); // Хранит только товары "Обувь"
+const shoesGoods = ref([]); 
 const loading = ref(true);
 const error = ref(null);
-const totalShoesCount = ref(0); // Для отображения количества
+const totalShoesCount = ref(0);
 
-// Функция для получения товаров "Обувь" с API
 async function fetchShoes() {
   loading.value = true;
   error.value = null;
   shoesGoods.value = [];
 
   try {
-    // Замените URL на ваш API-эндпоинт, который возвращает товары по категории
-    // Предположим, у вас есть эндпоинт вроде /api/Good/GetByCategory?categoryName=Обувь
-    // или вы фильтруете на клиенте, как в HomeView.vue
-    // Вариант 1: Если API предоставляет фильтрацию по категории:
-    // const response = await axios.get('http://localhost:5289/api/Good/GetByCategory?categoryName=Обувь');
-
-    // Вариант 2: Получаем все и фильтруем на клиенте (как в HomeView.vue)
+   
     const response = await axios.get('http://localhost:5289/api/Good/GetAllGoods');
     const allGoods = response.data;
     shoesGoods.value = allGoods.filter(item => item.category?.name?.toLowerCase().includes('одежда'));
@@ -79,26 +71,19 @@ onMounted(() => {
             </p>
           </div>
         </div>
-        <!-- Индикатор загрузки -->
         <div v-if="loading" class="loading">Загрузка товаров обуви...</div>
-        <!-- Сообщение об ошибке -->
         <div v-else-if="error" class="error">Ошибка: {{ error }}</div>
-        <!-- Основная часть с товарами -->
         <div v-else class="shoes-mainpart">
-          <!-- Рендерим карточки только если есть товары -->
           <GoodCardElement
             v-for="good in shoesGoods"
             :key="good.article"
             :article="good.article"
           />
-          <!-- Если товаров нет -->
           <div v-if="shoesGoods.length === 0" class="no-goods-message">
             <p>Нет товаров в категории "Обувь".</p>
           </div>
         </div>
-        <!-- Пагинация (пока пусто) -->
         <div class="paginaion">
-          <!-- Здесь будет компонент пагинации -->
         </div>
       </div>
     </div>

@@ -26,6 +26,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "XWEAR_API.Controllers.GoodController",
+    "Method": "getGoodById",
+    "RelativePath": "api/Good/GetGoodById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "goodId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "XWEAR_API.Controllers.UserController",
     "Method": "ChangeNickname",
     "RelativePath": "api/User/change-nickname",
@@ -34,14 +50,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "_changeEmail",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "_newNickname",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "request",
+        "Type": "XWEAR_API.Controllers.UserController\u002BChangeNicknameRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -55,19 +66,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "_oldPass",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "_email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "_newPass",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "request",
+        "Type": "XWEAR_API.Controllers.ChangePasswordRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -81,14 +82,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "_logEmail",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "_logPassword",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "request",
+        "Type": "XWEAR_API.Controllers.LoginRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -102,24 +98,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "_email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "_phone",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "_nickname",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "_password",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "request",
+        "Type": "XWEAR_API.Controllers.UserController\u002BRegisterRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
